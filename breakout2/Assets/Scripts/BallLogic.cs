@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallLogic : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class BallLogic : MonoBehaviour
     public float minVelocity;
     public float maxVelocity;
     public float minY;
+    private float gameOverHeight = -5.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +39,17 @@ public class BallLogic : MonoBehaviour
                 ballRb.linearVelocityY = minVelocity;
             }
         }
+        if (ballRb.position.y < gameOverHeight)
+        {
+            SceneManager.LoadScene("Main");
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Block")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
