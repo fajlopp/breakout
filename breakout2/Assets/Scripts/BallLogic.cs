@@ -5,10 +5,13 @@ public class BallLogic : MonoBehaviour
 {
     private Rigidbody2D ballRb;
 
-    private float minVelocity = 5;
-    private float maxVelocity = 7;
+    private float minVelocity = 3;
+    private float maxVelocity = 5;
     private float minY = -5;
-    public bool gameOver = false;
+
+    public ManageScene manageScene;
+    public AudioClip destroy;
+    public AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,14 +24,16 @@ public class BallLogic : MonoBehaviour
     void Update()
     {
         RestrictSpeed();
-        GameOver();
+        IfBallOut();
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.tag == "Block")
         {
+            audioSource.PlayOneShot(destroy, 0.2f);
             Destroy(collision.gameObject);
         }
     }
@@ -57,12 +62,13 @@ public class BallLogic : MonoBehaviour
         }
     }
 
-    private void GameOver()
+
+    private void IfBallOut()
     {
         if (ballRb.position.y < minY)
         {
             Destroy(gameObject);
-            gameOver = true;
         }
     }
+    
 }

@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRb;
-    public float moveSpeed = 5f;
-    public BallLogic ballLogic;
+    public float moveSpeed = 8f;
+    public ManageScene manageScene;
 
     float horizontalMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerMoves() 
     {
-        if (ballLogic.gameOver != true)
+        if (manageScene.gameOver != true && manageScene.gameWon != true)
         {
             playerRb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, 0);
         }
