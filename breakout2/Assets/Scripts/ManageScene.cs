@@ -25,7 +25,7 @@ public class ManageScene : MonoBehaviour
         blocksLeft.text = "Number of blocks left: " + countBlocks;
     }
 
-    public void OnClick()
+    public void ChangeToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }

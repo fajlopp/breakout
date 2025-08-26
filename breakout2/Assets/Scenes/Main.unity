@@ -7669,7 +7669,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1392377073}
         m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
-        m_MethodName: OnClick
+        m_MethodName: ChangeToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
