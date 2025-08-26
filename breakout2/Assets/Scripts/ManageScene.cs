@@ -29,7 +29,7 @@ public class ManageScene : MonoBehaviour
     {
         GameObject[] existingBlocks = GameObject.FindGameObjectsWithTag("Block");
         countBlocks = existingBlocks.Length;
-        blocksLeft.text = "Number of blocks left: " + countBlocks;
+        blocksLeft.text = "Blocks left: " + countBlocks;
     }
 
     public void CountBalls()
