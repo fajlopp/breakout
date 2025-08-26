@@ -8,6 +8,7 @@ public class BallLogic : MonoBehaviour
     private float minVelocity = 5;
     private float maxVelocity = 7;
     private float minY = -5;
+    public bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,10 +21,8 @@ public class BallLogic : MonoBehaviour
     void Update()
     {
         RestrictSpeed();
-        if (ballRb.position.y < minY)
-        {
-            SceneManager.LoadScene("Main");
-        }
+        GameOver();
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,6 +54,15 @@ public class BallLogic : MonoBehaviour
             {
                 ballRb.linearVelocityY = minVelocity;
             }
+        }
+    }
+
+    private void GameOver()
+    {
+        if (ballRb.position.y < minY)
+        {
+            Destroy(gameObject);
+            gameOver = true;
         }
     }
 }
